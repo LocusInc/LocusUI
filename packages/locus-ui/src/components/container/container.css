@@ -1,0 +1,14 @@
+.lcs-container {
+  box-sizing: border-box;
+  align-items: center;
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+
+.lcs-container-row {
+  flex-direction: row;
+}
+
+.lcs-container-column {
+  flex-direction: column;
+}

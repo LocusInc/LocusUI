@@ -1,0 +1,43 @@
+[data-theme-roundness="1"] {
+  --theme-roundness: 3px;
+}
+[data-theme-roundness="2"] {
+  --theme-roundness: 4px;
+}
+[data-theme-roundness="3"] {
+  --theme-roundness: 6px;
+}
+[data-theme-roundness="4"] {
+  --theme-roundness: 8px;
+}
+[data-theme-roundness="5"] {
+  --theme-roundness: 12px;
+}
+[data-theme-roundness="6"] {
+  --theme-roundness: 16px;
+}
+
+[data-roundness="1"] {
+  --component-roundness: 3px;
+}
+[data-roundness="2"] {
+  --component-roundness: 4px;
+}
+[data-roundness="3"] {
+  --component-roundness: 6px;
+}
+[data-roundness="4"] {
+  --component-roundness: 8px;
+}
+[data-roundness="5"] {
+  --component-roundness: 12px;
+}
+[data-roundness="6"] {
+  --component-roundness: 16px;
+}
+[data-roundness="theme"] {
+  --component-roundness: var(--theme-roundness);
+}
+[data-roundness="inherit"] {
+  --component-roundness: inherit;
+}

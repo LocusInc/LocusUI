@@ -1,0 +1,24 @@
+{
+  "name": "locus-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently -k -n UI,DOCS -c green,blue \"npm run dev:ui --workspace=packages/locus-ui\" \"npm run dev --workspace=apps/docs\"",
+    "dev:ui": "tsup --watch --silent",
+    "build:ui": "tsup",
+    "build": "npm run build:ui --workspace=packages/locus-ui && npm run build --workspace=apps/docs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}

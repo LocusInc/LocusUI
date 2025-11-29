@@ -1,0 +1,11 @@
+[data-appearance="light"] {
+  --text-color: rgb(30, 30, 30);
+  --background-color: rgb(218, 217, 217);
+  --border-color: rgb(65, 65, 65);
+}
+
+[data-appearance="dark"] {
+  --text-color: rgb(238, 238, 238);
+  --background-color: rgb(24, 24, 24);
+  --border-color: rgb(156, 156, 156);
+}

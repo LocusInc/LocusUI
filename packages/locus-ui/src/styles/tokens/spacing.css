@@ -1,0 +1,41 @@
+[data-spacing] {
+  --component-spacing: var(--theme-spacing);
+}
+
+[data-theme-spacing="xs"] {
+  --theme-spacing: 0.5;
+}
+[data-theme-spacing="sm"] {
+  --theme-spacing: 0.75;
+}
+[data-theme-spacing="md"] {
+  --theme-spacing: 1;
+}
+[data-theme-spacing="lg"] {
+  --theme-spacing: 1.5;
+}
+[data-theme-spacing="xl"] {
+  --theme-spacing: 2;
+}
+
+[data-spacing="xs"] {
+  --component-spacing: 0.5;
+}
+[data-spacing="sm"] {
+  --component-spacing: 0.75;
+}
+[data-spacing="md"] {
+  --component-spacing: 1;
+}
+[data-spacing="lg"] {
+  --component-spacing: 1.5;
+}
+[data-spacing="xl"] {
+  --component-spacing: 2;
+}
+[data-spacing="theme"] {
+  --component-spacing: var(--theme-spacing);
+}
+[data-spacing="inherit"] {
+  --component-spacing: inherit;
+}

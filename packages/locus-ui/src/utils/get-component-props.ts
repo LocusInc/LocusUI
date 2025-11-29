@@ -1,0 +1,87 @@
+import clsx from "clsx";
+import { PropDef } from "../props";
+
+export function getComponentProps<
+  P extends {
+    className?: string;
+    style?: React.CSSProperties;
+    [key: string]: any;
+  },
+  T extends Record<string, PropDef>[]
+>(props: P, ...propDefs: T) {
+  let style: React.CSSProperties = props.style ?? {};
+  const classNames: string[] = props.className ? [props.className] : [];
+  const dataAttrs: Record<string, string> = {};
+
+  const allProps = Object.assign({}, ...propDefs);
+  const propKeys = Object.keys(allProps);
+
+  console.log({ allProps, propDefs, propKeys });
+
+  // Create a copy of props excluding the component-specific props
+  const restProps = { ...props };
+  delete restProps.className;
+  delete restProps.style;
+
+  for (const key of propKeys) {
+    const prop = allProps[key];
+    const value = props?.[key];
+
+    // Remove the processed prop from restProps
+    delete restProps[key];
+
+    const applyValue = (propValue: any, breakpoint?: string) => {
+      const usedBreakpoint = breakpoint ? `-${breakpoint}` : "";
+
+      if (prop.type === "enum" || prop.type === "enum | string") {
+        if (propValue !== null && propValue !== undefined) {
+          if (!prop.values.includes(propValue)) {
+            if (prop.className) {
+              classNames.push(
+                breakpoint ? `${prop.className}-${breakpoint}` : prop.className
+              );
+              style = {
+                ...style,
+                [`--custom-${key}${usedBreakpoint}`]: propValue,
+              };
+            }
+
+            dataAttrs[`data-${prop.dataAttr}${usedBreakpoint}`] = propValue;
+          } else if (prop.dataAttr) {
+            if (propValue === "inherit" && prop.className) {
+              classNames.push(prop.className);
+            }
+
+            dataAttrs[`data-${prop.dataAttr}${usedBreakpoint}`] = propValue;
+          }
+        } else if (prop.dataAttr) {
+          dataAttrs[`data-${prop.dataAttr}${usedBreakpoint}`] = prop.default;
+        }
+      }
+    };
+
+    if (
+      "responsive" in prop &&
+      prop.responsive &&
+      value &&
+      typeof value === "object" &&
+      !Array.isArray(value)
+    ) {
+      // Apply breakpoint-specific values
+      for (const [bp, bpValue] of Object.entries(value)) {
+        applyValue(bpValue, bp);
+      }
+
+      if ("dataAttr" in prop && prop.dataAttr) {
+        dataAttrs[`data-${prop.dataAttr}`] = "";
+      }
+    } else applyValue(value);
+  }
+
+  return {
+    ...restProps,
+    style,
+    dataAttrs,
+    className: clsx(classNames),
+  };
+}
