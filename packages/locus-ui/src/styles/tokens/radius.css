@@ -53,11 +53,11 @@
 [data-radius="full"] {
   --component-radius: 9999;
 }
-[data-radius="theme"] {
-  --component-radius: var(--theme-radius);
-}
 [data-radius="inherit"] {
   --component-radius: inherit;
+}
+[data-radius="theme"] {
+  --component-radius: var(--theme-radius);
 }
 
 .lcs-radius {

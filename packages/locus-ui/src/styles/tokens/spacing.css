@@ -33,9 +33,9 @@
 [data-spacing="xl"] {
   --component-spacing: 2;
 }
-[data-spacing="theme"] {
-  --component-spacing: var(--theme-spacing);
-}
 [data-spacing="inherit"] {
   --component-spacing: inherit;
+}
+[data-spacing="theme"] {
+  --component-spacing: var(--theme-spacing);
 }

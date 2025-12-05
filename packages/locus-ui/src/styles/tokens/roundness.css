@@ -35,9 +35,9 @@
 [data-roundness="6"] {
   --component-roundness: 16px;
 }
-[data-roundness="theme"] {
-  --component-roundness: var(--theme-roundness);
-}
 [data-roundness="inherit"] {
   --component-roundness: inherit;
+}
+[data-roundness="theme"] {
+  --component-roundness: var(--theme-roundness);
 }
