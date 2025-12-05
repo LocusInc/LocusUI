@@ -70,13 +70,51 @@ export default function BoxPage() {
 
       <Box
         p="2"
-        mt="4"
+        my="4"
         radius={{ initial: "xs", sm: "xl", md: "full" }}
         className="border"
       >
         <Text>
           This box has breakpoint-specific radii (sm on sm, 10px on lg)
         </Text>
+      </Box>
+
+      <Text>Individual Corner Radii</Text>
+
+      <Box my="4" p="2" className="flex gap-2">
+        <Box p="2" radiusT="xl" radius="none" className="border">
+          <Text>This box has xl top radius only</Text>
+        </Box>
+
+        <Box p="2" radiusL="xl" radius="none" className="border">
+          <Text>This box has xl left radius only</Text>
+        </Box>
+
+        <Box p="2" radiusB="xl" radius="none" className="border">
+          <Text>This box has xl bottom radius only</Text>
+        </Box>
+
+        <Box p="2" radiusR="xl" radius="none" className="border">
+          <Text>This box has xl right radius only</Text>
+        </Box>
+      </Box>
+
+      <Box my="4" p="2" className="flex gap-2">
+        <Box p="2" radiusTL="xl" radius="none" className="border">
+          <Text>This box has xl top radius only</Text>
+        </Box>
+
+        <Box p="2" radiusTR="xl" radius="none" className="border">
+          <Text>This box has xl left radius only</Text>
+        </Box>
+
+        <Box p="2" radiusBR="xl" radius="none" className="border">
+          <Text>This box has xl bottom radius only</Text>
+        </Box>
+
+        <Box p="2" radiusBL="xl" radius="none" className="border">
+          <Text>This box has xl right radius only</Text>
+        </Box>
       </Box>
     </Container>
   );
