@@ -13,18 +13,17 @@ import {
   SpacingPropDef,
 } from "../../props";
 import { getComponentProps } from "../../utils/get-component-props";
-import { GetProps } from "../../utils/get-props";
-import { BoxPropsDefs } from "./box.props";
+import { BoxInternalProps, BoxPropsDefs } from "./box.props";
 
-interface ExternalProps
+interface BoxExternalProps
   extends MarginProps,
     PaddingProps,
     SpacingProp,
     RadiusProps,
     RoundnessProp {}
 
-export type BoxProps = GetProps<typeof BoxPropsDefs> &
-  ExternalProps &
+type BoxProps = BoxInternalProps &
+  BoxExternalProps &
   React.HTMLAttributes<HTMLDivElement>;
 
 /**
@@ -48,7 +47,7 @@ const Box = React.forwardRef<HTMLDivElement, BoxProps>((props, ref) => {
       className={clsx("lcs-box", className)}
       {...rest}
     >
-      {props.children}
+      {children}
     </div>
   );
 });

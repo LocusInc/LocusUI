@@ -1,3 +1,0 @@
-const BoxPropsDefs = {};
-
-export { BoxPropsDefs };
