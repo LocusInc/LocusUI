@@ -1,5 +1,3 @@
-"use client";
-
 import { Box, Container, Text } from "locus-ui";
 
 export default function BoxPage() {

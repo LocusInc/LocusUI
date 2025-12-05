@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import { ThemePropsDefs } from "./theme.props";
 

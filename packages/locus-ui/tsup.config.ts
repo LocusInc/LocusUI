@@ -9,8 +9,11 @@ export default defineConfig({
   sourcemap: true,
   shims: true,
   clean: true,
-  splitting: false,
+  splitting: true,
   external: ["react", "react-dom"],
+  banner: {
+    js: '"use client";',
+  },
   esbuildOptions(options) {
     options.alias = {
       "@": "./src",

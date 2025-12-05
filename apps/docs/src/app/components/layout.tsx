@@ -1,5 +1,3 @@
-"use client";
-
 import { Theme, ThemeControl } from "locus-ui";
 
 type ComponentsLayoutProps = React.PropsWithChildren & {};
