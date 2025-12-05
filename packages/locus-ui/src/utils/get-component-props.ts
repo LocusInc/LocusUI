@@ -16,8 +16,6 @@ export function getComponentProps<
   const allProps = Object.assign({}, ...propDefs);
   const propKeys = Object.keys(allProps);
 
-  console.log({ allProps, propDefs, propKeys });
-
   // Create a copy of props excluding the component-specific props
   const restProps = { ...props };
   delete restProps.className;
@@ -54,7 +52,7 @@ export function getComponentProps<
 
             dataAttrs[`data-${prop.dataAttr}${usedBreakpoint}`] = propValue;
           }
-        } else if (prop.dataAttr) {
+        } else if (prop.dataAttr && prop.default) {
           dataAttrs[`data-${prop.dataAttr}${usedBreakpoint}`] = prop.default;
         }
       }
