@@ -12,6 +12,7 @@ export function getComponentProps<
   let style: React.CSSProperties = props.style ?? {};
   const classNames: string[] = props.className ? [props.className] : [];
   const dataAttrs: Record<string, string> = {};
+  const extractedProps: Record<string, any> = {};
 
   const allProps = Object.assign({}, ...propDefs);
   const propKeys = Object.keys(allProps);
@@ -27,6 +28,26 @@ export function getComponentProps<
 
     // Remove the processed prop from restProps
     delete restProps[key];
+
+    // Store the value for non-enum props (boolean, string, function)
+    if (
+      prop.type === "boolean" ||
+      prop.type === "string" ||
+      prop.type === "function"
+    ) {
+      extractedProps[key] = value;
+
+      // Apply cssProperty if defined and value exists
+      if (prop.cssProperty && value !== undefined && value !== null) {
+        style = {
+          ...style,
+          [prop.cssProperty]:
+            prop.type === "boolean" ? (value ? "1" : "0") : value,
+        };
+      }
+
+      continue;
+    }
 
     const applyValue = (propValue: any, breakpoint?: string) => {
       const usedBreakpoint = breakpoint ? `-${breakpoint}` : "";
@@ -78,6 +99,7 @@ export function getComponentProps<
 
   return {
     ...restProps,
+    ...extractedProps,
     style,
     dataAttrs,
     className: clsx(classNames),
