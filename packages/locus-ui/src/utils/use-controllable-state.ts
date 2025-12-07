@@ -7,7 +7,7 @@ export function useControllableState<T>({
 }: {
   value?: T;
   defaultValue: T;
-  onChange?: (v: T) => void;
+  onChange?: (value: T) => void;
 }) {
   const [state, setState] = React.useState(defaultValue);
 
@@ -15,9 +15,9 @@ export function useControllableState<T>({
   const current = isControlled ? value : state;
 
   const set = React.useCallback(
-    (v: T) => {
-      if (!isControlled) setState(v);
-      onChange?.(v);
+    (value: T) => {
+      if (!isControlled) setState(value);
+      onChange?.(value);
     },
     [isControlled, onChange]
   );
