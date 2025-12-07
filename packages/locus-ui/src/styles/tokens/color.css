@@ -1,11 +1,19 @@
 [data-appearance="light"] {
-  --text-color: rgb(30, 30, 30);
-  --background-color: rgb(218, 217, 217);
-  --border-color: rgb(65, 65, 65);
+  --text-color: 30, 30, 30;
+
+  --background-color-1: 218, 217, 217;
+  --background-color-2: 186, 186, 186;
+  --background-color-3: 154, 154, 154;
+
+  --border-color: 65, 65, 65;
 }
 
 [data-appearance="dark"] {
-  --text-color: rgb(238, 238, 238);
-  --background-color: rgb(24, 24, 24);
-  --border-color: rgb(156, 156, 156);
+  --text-color: 238, 238, 238;
+
+  --background-color-1: 24, 24, 24;
+  --background-color-2: 48, 48, 48;
+  --background-color-3: 72, 72, 72;
+
+  --border-color: 156, 156, 156;
 }

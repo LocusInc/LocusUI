@@ -7,7 +7,7 @@ const PaddingPage = () => {
   const spacingValues = ["xs", "sm", "md", "lg", "xl"] as const;
 
   return (
-    <Container className="p-4 w-[100vw] h-[100vh] bg-[var(--background-color)]">
+    <Container className="p-4 w-[100vw] h-[100vh] bg-[rgb(var(--background-color-1))]">
       <Box className="border" p="4" m="4">
         This is the spacing page
       </Box>

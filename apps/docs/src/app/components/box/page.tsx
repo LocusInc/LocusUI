@@ -5,7 +5,7 @@ export default function BoxPage() {
   const radii = ["none", "xs", "sm", "md", "lg", "xl", "full"] as const;
 
   return (
-    <Container className="p-4 w-[100vw] h-[100vh] bg-[var(--background-color)]">
+    <Container className="p-4 w-[100vw] h-[100vh] bg-[rgb(rgb(var(--background-color-1)))]">
       <Box className="p-2 m-4 border">
         <Text>This box uses the default theme</Text>
       </Box>
