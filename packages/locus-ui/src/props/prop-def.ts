@@ -37,11 +37,19 @@ type EnumOrStringPropDef<T extends string> = {
   dataAttr?: string;
 };
 
+type FunctionPropDef<
+  T extends (...args: any[]) => any = (...args: any[]) => any
+> = {
+  type: "function";
+  required?: boolean;
+};
+
 type BasePropDef<T = any> =
   | BooleanPropDef
   | StringPropDef
   | EnumPropDef<T>
-  | EnumOrStringPropDef<T & string>;
+  | EnumOrStringPropDef<T & string>
+  | FunctionPropDef<T & ((...args: any[]) => any)>;
 
 type ResponsivePropDef<T = any> = BasePropDef<T> & { responsive: true };
 
@@ -55,6 +63,8 @@ type GetPropDefType<Def> = Def extends BooleanPropDef
   ? Def extends ResponsivePropDef
     ? Responsive<string>
     : string
+  : Def extends FunctionPropDef<infer Fn>
+  ? Fn
   : Def extends EnumOrStringPropDef<infer Type>
   ? Def extends ResponsivePropDef<infer Type extends string>
     ? Responsive<Union<string, Type>>
@@ -70,3 +80,4 @@ type GetPropDefTypes<P> = {
 };
 
 export { Breakpoint, GetPropDefTypes, PropDef, Responsive };
+export type { FunctionPropDef };
