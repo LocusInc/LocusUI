@@ -1,6 +1,6 @@
 [data-p] {
   --p: var(--custom-p);
-  padding: calc(var(--p) * var(--component-spacing, var(--theme-spacing, 1)));
+  padding: calc(var(--p) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 [data-p="0"] {
@@ -33,16 +33,14 @@
 
 .lcs-p {
   --p: var(--custom-p);
-  padding: calc(var(--p) * var(--component-spacing, var(--theme-spacing, 1)));
+  padding: calc(var(--p) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 /* Padding Top */
 
 [data-pt] {
   --pt: var(--custom-pt);
-  padding-top: calc(
-    var(--pt) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  padding-top: calc(var(--pt) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 [data-pt="0"] {
@@ -75,18 +73,14 @@
 
 .lcs-pt {
   --pt: var(--custom-pt);
-  padding-top: calc(
-    var(--pt) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  padding-top: calc(var(--pt) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 /* Padding Bottom */
 
 [data-pb] {
   --pb: var(--custom-pb);
-  padding-bottom: calc(
-    var(--pb) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  padding-bottom: calc(var(--pb) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 [data-pb="0"] {
@@ -119,18 +113,14 @@
 
 .lcs-pb {
   --pb: var(--custom-pb);
-  padding-bottom: calc(
-    var(--pb) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  padding-bottom: calc(var(--pb) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 /* Padding Left */
 
 [data-pl] {
   --pl: var(--custom-pl);
-  padding-left: calc(
-    var(--pl) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  padding-left: calc(var(--pl) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 [data-pl="0"] {
@@ -163,17 +153,13 @@
 
 .lcs-pl {
   --pl: var(--custom-pl);
-  padding-left: calc(
-    var(--pl) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  padding-left: calc(var(--pl) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 /* Padding Right */
 [data-pr] {
   --pr: var(--custom-pr);
-  padding-right: calc(
-    var(--pr) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  padding-right: calc(var(--pr) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 [data-pr="0"] {
@@ -206,20 +192,14 @@
 
 .lcs-pr {
   --pr: var(--custom-pr);
-  padding-right: calc(
-    var(--pr) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  padding-right: calc(var(--pr) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 /* Padding X */
 [data-px] {
   --px: var(--custom-px);
-  padding-left: calc(
-    var(--px) * var(--component-spacing, var(--theme-spacing, 1))
-  );
-  padding-right: calc(
-    var(--px) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  padding-left: calc(var(--px) * var(--lcs-spacing, var(--theme-spacing, 1)));
+  padding-right: calc(var(--px) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 [data-px="0"] {
@@ -252,23 +232,15 @@
 
 .lcs-px {
   --px: var(--custom-px);
-  padding-left: calc(
-    var(--px) * var(--component-spacing, var(--theme-spacing, 1))
-  );
-  padding-right: calc(
-    var(--px) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  padding-left: calc(var(--px) * var(--lcs-spacing, var(--theme-spacing, 1)));
+  padding-right: calc(var(--px) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 /* Padding Y */
 [data-py] {
   --py: var(--custom-py);
-  padding-top: calc(
-    var(--py) * var(--component-spacing, var(--theme-spacing, 1))
-  );
-  padding-bottom: calc(
-    var(--py) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  padding-top: calc(var(--py) * var(--lcs-spacing, var(--theme-spacing, 1)));
+  padding-bottom: calc(var(--py) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 [data-py="0"] {
@@ -301,10 +273,6 @@
 
 .lcs-py {
   --py: var(--custom-py);
-  padding-top: calc(
-    var(--py) * var(--component-spacing, var(--theme-spacing, 1))
-  );
-  padding-bottom: calc(
-    var(--py) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  padding-top: calc(var(--py) * var(--lcs-spacing, var(--theme-spacing, 1)));
+  padding-bottom: calc(var(--py) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }

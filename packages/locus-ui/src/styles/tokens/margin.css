@@ -1,6 +1,6 @@
 [data-m] {
   --m: var(--custom-m);
-  margin: calc(var(--m) * var(--component-spacing, var(--theme-spacing, 1)));
+  margin: calc(var(--m) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 [data-m="0"] {
@@ -57,16 +57,14 @@
 
 .lcs-m {
   --m: var(--custom-m);
-  margin: calc(var(--m) * var(--component-spacing, var(--theme-spacing, 1)));
+  margin: calc(var(--m) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 /* margin Top */
 
 [data-mt] {
   --mt: var(--custom-mt);
-  margin-top: calc(
-    var(--mt) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  margin-top: calc(var(--mt) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 [data-mt="0"] {
@@ -123,18 +121,14 @@
 
 .lcs-mt {
   --mt: var(--custom-mt);
-  margin-top: calc(
-    var(--mt) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  margin-top: calc(var(--mt) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 /* margin Bottom */
 
 [data-mb] {
   --mb: var(--custom-mb);
-  margin-bottom: calc(
-    var(--mb) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  margin-bottom: calc(var(--mb) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 [data-mb="0"] {
@@ -191,18 +185,14 @@
 
 .lcs-mb {
   --mb: var(--custom-mb);
-  margin-bottom: calc(
-    var(--mb) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  margin-bottom: calc(var(--mb) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 /* margin Left */
 
 [data-ml] {
   --ml: var(--custom-ml);
-  margin-left: calc(
-    var(--ml) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  margin-left: calc(var(--ml) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 [data-ml="0"] {
@@ -259,17 +249,13 @@
 
 .lcs-ml {
   --ml: var(--custom-ml);
-  margin-left: calc(
-    var(--ml) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  margin-left: calc(var(--ml) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 /* margin Right */
 [data-mr] {
   --mr: var(--custom-mr);
-  margin-right: calc(
-    var(--mr) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  margin-right: calc(var(--mr) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 [data-mr="0"] {
@@ -326,20 +312,14 @@
 
 .lcs-mr {
   --mr: var(--custom-mr);
-  margin-right: calc(
-    var(--mr) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  margin-right: calc(var(--mr) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 /* margin X */
 [data-mx] {
   --mx: var(--custom-mx);
-  margin-left: calc(
-    var(--mx) * var(--component-spacing, var(--theme-spacing, 1))
-  );
-  margin-right: calc(
-    var(--mx) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  margin-left: calc(var(--mx) * var(--lcs-spacing, var(--theme-spacing, 1)));
+  margin-right: calc(var(--mx) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 [data-mx="0"] {
@@ -396,23 +376,15 @@
 
 .lcs-mx {
   --mx: var(--custom-mx);
-  margin-left: calc(
-    var(--mx) * var(--component-spacing, var(--theme-spacing, 1))
-  );
-  margin-right: calc(
-    var(--mx) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  margin-left: calc(var(--mx) * var(--lcs-spacing, var(--theme-spacing, 1)));
+  margin-right: calc(var(--mx) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 /* margin Y */
 [data-my] {
   --my: var(--custom-my);
-  margin-top: calc(
-    var(--my) * var(--component-spacing, var(--theme-spacing, 1))
-  );
-  margin-bottom: calc(
-    var(--my) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  margin-top: calc(var(--my) * var(--lcs-spacing, var(--theme-spacing, 1)));
+  margin-bottom: calc(var(--my) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }
 
 [data-my="0"] {
@@ -469,10 +441,6 @@
 
 .lcs-my {
   --my: var(--custom-my);
-  margin-top: calc(
-    var(--my) * var(--component-spacing, var(--theme-spacing, 1))
-  );
-  margin-bottom: calc(
-    var(--my) * var(--component-spacing, var(--theme-spacing, 1))
-  );
+  margin-top: calc(var(--my) * var(--lcs-spacing, var(--theme-spacing, 1)));
+  margin-bottom: calc(var(--my) * var(--lcs-spacing, var(--theme-spacing, 1)));
 }

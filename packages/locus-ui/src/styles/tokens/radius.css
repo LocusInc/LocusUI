@@ -9,7 +9,8 @@
   --radius-6: calc(16px * var(--component-radius));
 
   --component-radius: var(--custom-radius, var(--theme-radius));
-  border-radius: calc(var(--component-roundness) * var(--component-radius));
+  --lcs-radius: calc(var(--component-roundness) * var(--component-radius));
+  border-radius: var(--lcs-radius);
 }
 
 [data-theme-radius="none"] {
