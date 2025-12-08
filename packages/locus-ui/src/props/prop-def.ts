@@ -9,6 +9,7 @@ type BooleanPropDef = {
   required?: boolean;
   className?: string;
   cssProperty?: string;
+  dataAttr?: string;
 };
 
 type StringPropDef = {

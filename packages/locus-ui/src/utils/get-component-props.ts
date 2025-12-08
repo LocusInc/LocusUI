@@ -37,13 +37,17 @@ export function getComponentProps<
     ) {
       extractedProps[key] = value;
 
-      // Apply cssProperty if defined and value exists
       if (prop.cssProperty && value !== undefined && value !== null) {
         style = {
           ...style,
           [prop.cssProperty]:
             prop.type === "boolean" ? (value ? "1" : "0") : value,
         };
+      }
+
+      if (prop.dataAttr) {
+        dataAttrs[`data-${prop.dataAttr}`] =
+          prop.type === "boolean" ? (value ? "true" : "false") : value;
       }
 
       continue;
