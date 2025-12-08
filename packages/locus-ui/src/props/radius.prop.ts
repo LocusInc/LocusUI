@@ -20,6 +20,8 @@ const RadiusPropDefs = {
    * @example radius="26px" // 26px border-radius custom value
    * @example radius={{ initial: "none", lg: "full" }} // responsive border-radius
    *
+   * @default "theme" // uses the theme's default border-radius value or none if not set
+   *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius
    */

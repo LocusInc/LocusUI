@@ -9,6 +9,8 @@ const SpacingPropDef = {
    *
    * @example spacing="md" // medium spacing scale (1)
    * @example spacing={{ initial: "sm", lg: "xl" }} // responsive spacing
+   *
+   * @default "theme" // uses the theme's default spacing value or none if not set
    */
   spacing: {
     type: "enum",
