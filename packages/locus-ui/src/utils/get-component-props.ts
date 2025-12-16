@@ -33,6 +33,7 @@ export function getComponentProps<
     if (
       prop.type === "boolean" ||
       prop.type === "string" ||
+      prop.type === "reactNode" ||
       prop.type === "function"
     ) {
       extractedProps[key] = value;
@@ -76,6 +77,8 @@ export function getComponentProps<
             }
 
             dataAttrs[`data-${prop.dataAttr}${usedBreakpoint}`] = propValue;
+          } else {
+            extractedProps[key] = propValue;
           }
         } else if (prop.dataAttr && prop.default) {
           dataAttrs[`data-${prop.dataAttr}${usedBreakpoint}`] = prop.default;
