@@ -1,0 +1,21 @@
+.lcs-portal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+
+  &[data-variant="clear"] {
+    background-color: transparent;
+  }
+
+  &[data-variant="shadow"] {
+    background-color: rgba(0, 0, 0, var(--lcs-backdrop-opacity, 0.3));
+  }
+
+  &[data-variant="blurred"] {
+    background-color: rgba(0, 0, 0, var(--lcs-backdrop-opacity, 0.3));
+    backdrop-filter: blur(var(--lcs-backdrop-blur, 2px));
+  }
+}

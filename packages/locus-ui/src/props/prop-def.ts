@@ -20,6 +20,11 @@ type StringPropDef = {
   cssProperty?: string;
 };
 
+type ReactNodePropDef<T = React.ReactNode> = {
+  type: "reactNode";
+  required?: boolean;
+};
+
 type EnumPropDef<T> = {
   type: "enum";
   values: readonly T[];
@@ -48,6 +53,7 @@ type FunctionPropDef<
 type BasePropDef<T = any> =
   | BooleanPropDef
   | StringPropDef
+  | ReactNodePropDef<T>
   | EnumPropDef<T>
   | EnumOrStringPropDef<T & string>
   | FunctionPropDef<T & ((...args: any[]) => any)>;
@@ -64,6 +70,8 @@ type GetPropDefType<Def> = Def extends BooleanPropDef
   ? Def extends ResponsivePropDef
     ? Responsive<string>
     : string
+  : Def extends ReactNodePropDef<infer Type>
+  ? Type
   : Def extends FunctionPropDef<infer Fn>
   ? Fn
   : Def extends EnumOrStringPropDef<infer Type>
@@ -81,4 +89,4 @@ type GetPropDefTypes<P> = {
 };
 
 export { Breakpoint, GetPropDefTypes, PropDef, Responsive };
-export type { FunctionPropDef };
+export type { FunctionPropDef, ReactNodePropDef };

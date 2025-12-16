@@ -1,38 +1,26 @@
 "use client";
 
 import * as React from "react";
-import { PortalPropsDefs } from "./portal.props";
 
-export type PortalOpen = boolean | undefined;
-export type PortalDefaultOpen = boolean | undefined;
-export type PortalVariant =
-  | (typeof PortalPropsDefs.variant.values)[number]
-  | undefined;
-export type PortalPosition =
-  | (typeof PortalPropsDefs.position.values)[number]
-  | undefined;
-
-interface PortalChangeHandlers {
+interface PortalContextValue {
+  open: boolean;
   onOpenChange?: (open: boolean) => void;
-  onVariantChange?: (variant: PortalVariant) => void;
-}
-
-interface PortalContextValue extends PortalChangeHandlers {
-  open: PortalOpen;
-  variant: PortalVariant;
-  position: PortalPosition;
+  /** Ref to the trigger element, used as default anchor */
+  triggerRef: React.RefObject<HTMLElement | null>;
+  /** Custom anchor element ref (overrides trigger as anchor) */
+  anchorRef?: React.RefObject<HTMLElement | null>;
 }
 
 const PortalContext = React.createContext<PortalContextValue | undefined>(
   undefined
 );
 
-interface PortalContextProps extends PortalContextValue, PortalChangeHandlers {}
+interface PortalContextProps extends PortalContextValue {}
 
 function usePortalContext() {
   const context = React.useContext(PortalContext);
   if (!context) {
-    throw new Error("`usePortalContext` must be used within a `Portal`");
+    throw new Error("`usePortalContext` must be used within a `Portal.Root`");
   }
   return context;
 }

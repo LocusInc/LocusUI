@@ -1,0 +1,173 @@
+"use client";
+
+import clsx from "clsx";
+import * as React from "react";
+import ReactDOM from "react-dom";
+import { getComponentProps } from "../../../utils/get-component-props";
+import { ThemeContext } from "../../theme/theme-context";
+import { usePortalContext } from "../portal-context";
+import {
+  AnchorAlign,
+  AnchorSide,
+  useAnchorPosition,
+} from "../utils/use-anchor-position";
+import {
+  PortalContentInternalProps,
+  PortalContentPropsDefs,
+} from "./portal-content.props";
+
+interface AllPortalContentProps extends PortalContentInternalProps {}
+
+type PortalContentProps = AllPortalContentProps &
+  React.HTMLAttributes<HTMLDivElement>;
+
+/** The content displayed within a portal. */
+const PortalContent = React.forwardRef<HTMLDivElement, PortalContentProps>(
+  (props, ref) => {
+    const portalContext = usePortalContext();
+    const themeContext = React.useContext(ThemeContext);
+    const contentRef = React.useRef<HTMLDivElement>(null);
+
+    const {
+      side = "bottom",
+      align = "center",
+      sideOffset = "0",
+      alignOffset = "0",
+      anchored = false,
+      children,
+      className,
+      dataAttrs,
+      style,
+    } = getComponentProps(props, PortalContentPropsDefs);
+
+    // Determine anchor element (custom anchorRef or triggerRef)
+    const anchorRef = portalContext.anchorRef ?? portalContext.triggerRef;
+
+    // Calculate anchor position when anchored mode is enabled
+    const anchorPosition = useAnchorPosition({
+      anchorRef,
+      contentRef,
+      side: side as AnchorSide,
+      align: align as AnchorAlign,
+      sideOffset: parseInt(sideOffset, 10) || 0,
+      alignOffset: parseInt(alignOffset, 10) || 0,
+      enabled: anchored && portalContext.open,
+    });
+
+    // Compose refs
+    const setRefs = React.useCallback(
+      (node: HTMLDivElement | null) => {
+        contentRef.current = node;
+        if (typeof ref === "function") {
+          ref(node);
+        } else if (ref) {
+          ref.current = node;
+        }
+      },
+      [ref]
+    );
+
+    React.useEffect(() => {
+      if (!portalContext.open) return;
+
+      function onKeyDown(e: KeyboardEvent) {
+        if (e.key === "Escape") {
+          portalContext.onOpenChange?.(false);
+        }
+      }
+
+      document.addEventListener("keydown", onKeyDown);
+
+      return () => {
+        document.removeEventListener("keydown", onKeyDown);
+      };
+    }, [portalContext.open, portalContext.onOpenChange]);
+
+    // Click outside listener for anchored portals
+    React.useEffect(() => {
+      if (!portalContext.open || !anchored) return;
+
+      function onClickOutside(e: MouseEvent) {
+        const target = e.target as Node;
+        const content = contentRef.current;
+        const trigger = (portalContext.anchorRef ?? portalContext.triggerRef)
+          ?.current;
+
+        // Don't close if clicking inside the content or the trigger
+        if (content?.contains(target) || trigger?.contains(target)) {
+          return;
+        }
+
+        portalContext.onOpenChange?.(false);
+      }
+
+      // Use setTimeout to avoid the click that opened the portal from immediately closing it
+      const timeoutId = setTimeout(() => {
+        document.addEventListener("click", onClickOutside);
+      }, 0);
+
+      return () => {
+        clearTimeout(timeoutId);
+        document.removeEventListener("click", onClickOutside);
+      };
+    }, [
+      portalContext.open,
+      portalContext.onOpenChange,
+      portalContext.anchorRef,
+      portalContext.triggerRef,
+      anchored,
+    ]);
+
+    const container = portalContext.open && globalThis?.document?.body;
+    if (!container) return null;
+
+    // Build style for anchored positioning
+    const combinedStyle: React.CSSProperties = {
+      ...style,
+      ...(anchored && anchorPosition
+        ? {
+            position: "absolute",
+            top: anchorPosition.top,
+            left: anchorPosition.left,
+          }
+        : {}),
+    };
+
+    const portalContent = (
+      <div
+        ref={setRefs}
+        className={clsx("lcs-portal", className)}
+        data-appearance={themeContext?.appearance}
+        data-theme-radius={themeContext?.radius}
+        data-theme-roundness={themeContext?.roundness}
+        data-theme-spacing={themeContext?.spacing}
+        onClick={
+          anchored ? undefined : () => portalContext.onOpenChange?.(false)
+        }
+        style={combinedStyle}
+        {...dataAttrs}
+      >
+        <div
+          className="lcs-portal-content"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {children}
+        </div>
+      </div>
+    );
+
+    // Wrap with ThemeContext if available to pass theme through
+    const content = themeContext ? (
+      <ThemeContext.Provider value={themeContext}>
+        {portalContent}
+      </ThemeContext.Provider>
+    ) : (
+      portalContent
+    );
+
+    return ReactDOM.createPortal(content, container);
+  }
+);
+PortalContent.displayName = "Portal.Content";
+
+export { AllPortalContentProps, PortalContent, PortalContentProps };

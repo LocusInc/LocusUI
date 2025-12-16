@@ -1,0 +1,60 @@
+.lcs-portal {
+  position: fixed;
+  display: flex;
+  inset: 0;
+  width: 100dvw;
+  height: 100dvh;
+  z-index: 9999;
+}
+
+/* Anchored portal styles - override full-screen overlay */
+.lcs-portal[data-anchored="true"] {
+  position: absolute;
+  inset: auto;
+  width: auto;
+  height: auto;
+}
+
+.lcs-portal:not([data-anchored="true"]) {
+  &[data-position="tl"] {
+    justify-content: start;
+  }
+
+  &[data-position="top"] {
+    justify-content: center;
+  }
+
+  &[data-position="tr"] {
+    justify-content: end;
+  }
+
+  &[data-position="left"] {
+    justify-content: start;
+    align-items: center;
+  }
+
+  &[data-position="center"] {
+    justify-content: center;
+    align-items: center;
+  }
+
+  &[data-position="right"] {
+    justify-content: end;
+    align-items: center;
+  }
+
+  &[data-position="bl"] {
+    justify-content: start;
+    align-items: end;
+  }
+
+  &[data-position="bottom"] {
+    justify-content: center;
+    align-items: end;
+  }
+
+  &[data-position="br"] {
+    justify-content: end;
+    align-items: end;
+  }
+}
