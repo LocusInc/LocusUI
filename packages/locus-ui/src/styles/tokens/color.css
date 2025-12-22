@@ -1,5 +1,10 @@
 [data-appearance="light"] {
+  --primary: 247, 143, 25;
+  --primary-dark: 201, 108, 2;
+  --primary-light: 252, 160, 56;
+
   --text-color: 30, 30, 30;
+  --text-color-disabled: 14, 14, 14;
 
   --background-color-1: 218, 217, 217;
   --background-color-2: 186, 186, 186;
@@ -9,7 +14,12 @@
 }
 
 [data-appearance="dark"] {
+  --primary: 247, 143, 25;
+  --primary-dark: 201, 108, 2;
+  --primary-light: 252, 160, 56;
+
   --text-color: 238, 238, 238;
+  --text-color-disabled: 144, 144, 144;
 
   --background-color-1: 24, 24, 24;
   --background-color-2: 48, 48, 48;

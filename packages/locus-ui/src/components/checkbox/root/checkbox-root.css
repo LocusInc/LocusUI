@@ -1,0 +1,25 @@
+.lcs-checkbox-root {
+  display: flex;
+  align-items: center;
+  gap: calc(8px * var(--lcs-spacing, 1));
+  cursor: pointer;
+
+  &[data-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &:has(.lcs-checkbox-label[data-position="top"]) {
+    flex-direction: column-reverse;
+    align-items: start;
+  }
+
+  &:has(.lcs-checkbox-label[data-position="bottom"]) {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  &:has(.lcs-checkbox-label[data-position="left"]) {
+    flex-direction: row-reverse;
+  }
+}
