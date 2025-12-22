@@ -56,7 +56,7 @@ const CheckboxPage = () => {
         <Text mt="4">High Contrast</Text>
 
         <div className="flex gap-4">
-          <Checkbox highContrast>
+          <Checkbox defaultChecked highContrast>
             <Checkbox.Label>Solid</Checkbox.Label>
           </Checkbox>
 
