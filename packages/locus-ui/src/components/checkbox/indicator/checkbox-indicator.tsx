@@ -21,30 +21,51 @@ const CheckboxIndicator: React.FC<CheckboxIndicatorProps> = React.forwardRef<
   HTMLSpanElement,
   CheckboxIndicatorProps
 >((props, ref) => {
-  const { value, hovered, variant, disabled, indeterminate, highContrast } =
-    useCheckboxContext();
-  const { className } = getComponentProps(props, CheckboxIndicatorPropDefs);
+  const {
+    value,
+    hovered,
+    variant: contextVariant,
+    disabled,
+    indeterminate: contextIndeterminate,
+    highContrast: contextHighContrast,
+  } = useCheckboxContext();
+  const { variant, indeterminate, highContrast, className } = getComponentProps(
+    props,
+    CheckboxIndicatorPropDefs
+  );
+
+  const indicatorVariant = variant || contextVariant;
+  const indicatorHighContrast = highContrast || contextHighContrast;
+  const indicatorIndeterminate = indeterminate || contextIndeterminate;
 
   return (
     <span
       ref={ref}
       data-checked={value}
       data-hovered={hovered}
-      data-variant={variant}
       data-disabled={disabled}
-      data-high-contrast={highContrast}
-      data-indeterminate={indeterminate}
+      data-variant={indicatorVariant}
+      data-high-contrast={indicatorHighContrast}
+      data-indeterminate={indicatorIndeterminate}
       className={clsx("lcs-checkbox-indicator", className)}
     >
-      {indeterminate && !value && (
+      {indicatorIndeterminate && !value && (
         <Minus
-          color={highContrast && variant === "solid" ? "black" : "white"}
+          color={
+            indicatorHighContrast && indicatorVariant === "solid"
+              ? "black"
+              : "white"
+          }
         />
       )}
 
       {value && (
         <CheckMark
-          color={highContrast && variant === "solid" ? "black" : "white"}
+          color={
+            indicatorHighContrast && indicatorVariant === "solid"
+              ? "black"
+              : "white"
+          }
         />
       )}
     </span>

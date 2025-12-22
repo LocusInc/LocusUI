@@ -4,7 +4,7 @@ import {
   PropDef,
 } from "../../../props/prop-def";
 
-const variants = ["solid", "outlined"] as const;
+const CheckboxVariants = ["solid", "outlined"] as const;
 
 const CheckboxRootPropsDefs = {
   /**
@@ -14,10 +14,16 @@ const CheckboxRootPropsDefs = {
    */
   variant: {
     type: "enum",
-    values: variants,
-    default: "solid",
+    values: CheckboxVariants,
     dataAttr: "variant",
-  } satisfies PropDef<(typeof variants)[number]>,
+  } satisfies PropDef<(typeof CheckboxVariants)[number]>,
+
+  /**
+   * Sets the indeterminate state of the checkbox.
+   */
+  indeterminate: {
+    type: "boolean",
+  } satisfies PropDef<boolean>,
 
   /**
    * Enables high contrast mode for better visibility.
@@ -32,13 +38,6 @@ const CheckboxRootPropsDefs = {
    * Sets the controlled checked state of the checkbox.
    */
   value: {
-    type: "boolean",
-  } satisfies PropDef<boolean>,
-
-  /**
-   * Sets the indeterminate state of the checkbox.
-   */
-  indeterminate: {
     type: "boolean",
   } satisfies PropDef<boolean>,
 
@@ -84,4 +83,4 @@ const CheckboxRootPropsDefs = {
 
 type CheckboxRootInternalProps = GetPropDefTypes<typeof CheckboxRootPropsDefs>;
 
-export { CheckboxRootInternalProps, CheckboxRootPropsDefs };
+export { CheckboxRootInternalProps, CheckboxRootPropsDefs, CheckboxVariants };

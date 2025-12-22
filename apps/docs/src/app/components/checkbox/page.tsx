@@ -11,11 +11,17 @@ const CheckboxPage = () => {
       <h1 className="text-2xl font-bold mb-4">Checkbox Component</h1>
 
       <div className="flex flex-col gap-2">
-        <Text>Label Positions</Text>
+        <Text>Unstyled</Text>
+
+        <Checkbox>
+          <Checkbox.Label>Unstyled</Checkbox.Label>
+        </Checkbox>
+
+        <Text className="mt-4">Label Positions</Text>
 
         <div className="flex gap-8">
           {labelPositions.map((position) => (
-            <Checkbox key={position}>
+            <Checkbox key={position} variant="solid">
               <Checkbox.Label position={position}>{position}</Checkbox.Label>
             </Checkbox>
           ))}
@@ -34,11 +40,11 @@ const CheckboxPage = () => {
         <Text mt="4">States</Text>
 
         <div className="flex gap-4">
-          <Checkbox disabled>
+          <Checkbox disabled variant="solid">
             <Checkbox.Label>Disabled</Checkbox.Label>
           </Checkbox>
 
-          <Checkbox defaultChecked>
+          <Checkbox defaultChecked variant="solid">
             <Checkbox.Label>Default Checked</Checkbox.Label>
           </Checkbox>
         </div>
@@ -56,11 +62,12 @@ const CheckboxPage = () => {
         <Text mt="4">High Contrast</Text>
 
         <div className="flex gap-4">
-          <Checkbox defaultChecked highContrast>
+          <Checkbox defaultChecked highContrast variant="solid">
             <Checkbox.Label>Solid</Checkbox.Label>
           </Checkbox>
 
-          <Checkbox indeterminate highContrast>
+          <Checkbox indeterminate highContrast variant="solid">
+            <Checkbox.Indicator />
             <Checkbox.Label>Solid Indeterminate</Checkbox.Label>
           </Checkbox>
         </div>

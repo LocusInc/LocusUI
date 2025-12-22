@@ -1,7 +1,14 @@
 "use client";
 
 import clsx from "clsx";
-import { FC, HTMLAttributes, useId, useMemo, useState } from "react";
+import React, {
+  FC,
+  HTMLAttributes,
+  isValidElement,
+  useId,
+  useMemo,
+  useState,
+} from "react";
 import { MarginPropDefs, MarginProps } from "../../../props";
 import {
   filterChildren,
@@ -23,7 +30,10 @@ import {
 
 interface AllCheckboxRootProps extends CheckboxRootInternalProps, MarginProps {}
 
-const ALLOWED_CHILDREN = [CheckboxLabel.displayName!];
+const ALLOWED_CHILDREN = [
+  CheckboxLabel.displayName!,
+  CheckboxIndicator.displayName!,
+];
 
 /**
  * A versatile Checkbox, managing state, context, and styling.
@@ -62,6 +72,26 @@ const CheckboxRoot: FC<CheckboxRootProps> = (props) => {
   const validChildren = filterChildren(props.children, ALLOWED_CHILDREN, {
     parentDisplayName: CheckboxRoot.displayName,
   });
+
+  const { indicator, otherChildren } = useMemo(() => {
+    const indicatorIndex = validChildren.findIndex(
+      (child) =>
+        isValidElement(child) &&
+        (child.type as React.FC).displayName === CheckboxIndicator.displayName
+    );
+
+    if (indicatorIndex > -1) {
+      return {
+        indicator: validChildren[indicatorIndex],
+        otherChildren: validChildren.filter((_, i) => i !== indicatorIndex),
+      };
+    }
+
+    return {
+      indicator: <CheckboxIndicator />,
+      otherChildren: validChildren,
+    };
+  }, [validChildren]);
 
   const contextValue = useMemo(
     () => ({
@@ -111,8 +141,8 @@ const CheckboxRoot: FC<CheckboxRootProps> = (props) => {
         onMouseLeave={() => setHovered(false)}
         {...dataAttrs}
       >
-        <CheckboxIndicator />
-        {validChildren}
+        {indicator}
+        {otherChildren}
         {name && <input type="hidden" name={name} value={String(value)} />}
       </div>
     </CheckboxContext.Provider>
