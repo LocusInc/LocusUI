@@ -1,4 +1,4 @@
-.lcs-checkbox-indicator {
+.checkbox-indicator[data-variant] {
   position: relative;
   display: flex;
   align-items: center;
@@ -9,6 +9,11 @@
   border-radius: max(8px, var(--lcs-radius, 0px));
   overflow: hidden;
   transition: background-color 100ms, border-color 100ms;
+
+  /* Disabled */
+  &[data-disabled="true"] {
+    cursor: not-allowed;
+  }
 
   /* Solid variant */
   &[data-variant="solid"] {
@@ -63,10 +68,5 @@
     &[data-hovered="true"]:not([data-disabled="true"]) {
       border-color: rgba(var(--primary-dark), 0.7);
     }
-  }
-
-  /* Disabled */
-  &[data-disabled="true"] {
-    cursor: not-allowed;
   }
 }

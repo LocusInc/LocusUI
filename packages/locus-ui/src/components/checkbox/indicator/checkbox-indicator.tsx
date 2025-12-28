@@ -47,7 +47,7 @@ const CheckboxIndicator: React.FC<CheckboxIndicatorProps> = React.forwardRef<
       data-variant={indicatorVariant}
       data-high-contrast={indicatorHighContrast}
       data-indeterminate={indicatorIndeterminate}
-      className={clsx("lcs-checkbox-indicator", className)}
+      className={clsx("checkbox-indicator", className)}
     >
       {indicatorIndeterminate && !value && (
         <Minus

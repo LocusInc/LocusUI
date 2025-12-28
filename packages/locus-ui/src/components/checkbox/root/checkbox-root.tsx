@@ -134,8 +134,9 @@ const CheckboxRoot: FC<CheckboxRootProps> = (props) => {
     <CheckboxContext.Provider value={contextValue}>
       <div
         data-checked={value}
+        data-variant={variant}
         data-disabled={disabled}
-        className={clsx("lcs-checkbox-root", props.className)}
+        className={clsx("checkbox-root", props.className)}
         onClick={() => handleClick()}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
