@@ -12,4 +12,5 @@ export {
 } from "./prop-def";
 export { RadiusPropDefs, RadiusProps } from "./radius.prop";
 export { RoundnessProp, RoundnessPropDef } from "./roundness.prop";
+export { SizeProp, SizePropDef } from "./size.prop";
 export { SpacingProp, SpacingPropDef } from "./spacing.prop";
