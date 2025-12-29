@@ -47,8 +47,10 @@ export function getComponentProps<
       }
 
       if (prop.dataAttr) {
-        dataAttrs[`data-${prop.dataAttr}`] =
-          prop.type === "boolean" ? (value ? "true" : "false") : value;
+        if (value) dataAttrs[`data-${prop.dataAttr}`] = value;
+        else if (prop.default !== undefined) {
+          dataAttrs[`data-${prop.dataAttr}`] = prop.default;
+        }
       }
 
       continue;
@@ -59,6 +61,10 @@ export function getComponentProps<
 
       if (prop.type === "enum" || prop.type === "enum | string") {
         if (propValue !== null && propValue !== undefined) {
+          if (!breakpoint) {
+            extractedProps[key] = propValue;
+          }
+
           if (!prop.values.includes(propValue)) {
             if (prop.className) {
               classNames.push(
@@ -70,18 +76,21 @@ export function getComponentProps<
               };
             }
 
-            dataAttrs[`data-${prop.dataAttr}${usedBreakpoint}`] = propValue;
+            if (prop.dataAttr) {
+              dataAttrs[`data-${prop.dataAttr}${usedBreakpoint}`] = propValue;
+            }
           } else if (prop.dataAttr) {
             if (propValue === "inherit" && prop.className) {
               classNames.push(prop.className);
             }
 
             dataAttrs[`data-${prop.dataAttr}${usedBreakpoint}`] = propValue;
-          } else {
-            extractedProps[key] = propValue;
           }
         } else if (prop.dataAttr && prop.default) {
-          dataAttrs[`data-${prop.dataAttr}${usedBreakpoint}`] = prop.default;
+          if (!breakpoint) extractedProps[key] = prop.default;
+          if (prop.dataAttr) {
+            dataAttrs[`data-${prop.dataAttr}${usedBreakpoint}`] = prop.default;
+          }
         }
       }
     };
