@@ -1,3 +1,4 @@
+export { AlignProp, AlignPropDef } from "./align.prop";
 export { DirectionPropDef } from "./direction.prop";
 export { MarginPropDefs, MarginProps } from "./margin.prop";
 export { PaddingPropDefs, PaddingProps } from "./padding.prop";

@@ -1,6 +1,7 @@
+@import "./align.css";
+@import "./color.css";
+@import "./margin.css";
+@import "./padding.css";
 @import "./radius.css";
 @import "./roundness.css";
-@import "./color.css";
-@import "./padding.css";
-@import "./margin.css";
 @import "./spacing.css";
