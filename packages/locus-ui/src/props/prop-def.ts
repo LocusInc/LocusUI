@@ -77,7 +77,7 @@ type GetPropDefType<Def> = Def extends BooleanPropDef
   : Def extends EnumOrStringPropDef<infer Type>
   ? Def extends ResponsivePropDef<infer Type extends string>
     ? Responsive<Union<string, Type>>
-    : Type
+    : Union<string, Type>
   : Def extends EnumPropDef<infer Type>
   ? Def extends ResponsivePropDef<infer Type>
     ? Responsive<Type>
