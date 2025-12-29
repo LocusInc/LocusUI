@@ -3,6 +3,7 @@
 import clsx from "clsx";
 import * as React from "react";
 import ReactDOM from "react-dom";
+import { AlignProp, AlignPropDef } from "../../../props";
 import { getComponentProps } from "../../../utils/get-component-props";
 import { ThemeContext } from "../../theme/theme-context";
 import { usePortalContext } from "../portal-context";
@@ -16,7 +17,7 @@ import {
   PortalContentPropsDefs,
 } from "./portal-content.props";
 
-interface AllPortalContentProps extends PortalContentInternalProps {}
+interface AllPortalContentProps extends PortalContentInternalProps, AlignProp {}
 
 type PortalContentProps = AllPortalContentProps &
   React.HTMLAttributes<HTMLDivElement>;
@@ -38,7 +39,7 @@ const PortalContent = React.forwardRef<HTMLDivElement, PortalContentProps>(
       className,
       dataAttrs,
       style,
-    } = getComponentProps(props, PortalContentPropsDefs);
+    } = getComponentProps(props, PortalContentPropsDefs, AlignPropDef);
 
     // Determine anchor element (custom anchorRef or triggerRef)
     const anchorRef = portalContext.anchorRef ?? portalContext.triggerRef;
@@ -138,6 +139,9 @@ const PortalContent = React.forwardRef<HTMLDivElement, PortalContentProps>(
         ref={setRefs}
         className={clsx("lcs-portal", className)}
         data-appearance={themeContext?.appearance}
+        data-radius={themeContext?.radius}
+        data-roundness={themeContext?.roundness ?? "theme"}
+        data-spacing={themeContext?.spacing ?? "theme"}
         data-theme-radius={themeContext?.radius}
         data-theme-roundness={themeContext?.roundness}
         data-theme-spacing={themeContext?.spacing}

@@ -14,7 +14,6 @@ const positions = [
 ] as const;
 
 const anchorSides = ["top", "right", "bottom", "left"] as const;
-const anchorAligns = ["start", "center", "end"] as const;
 
 const PortalContentPropsDefs = {
   /**
@@ -52,17 +51,6 @@ const PortalContentPropsDefs = {
     values: anchorSides,
     default: "bottom",
   } satisfies PropDef<(typeof anchorSides)[number]>,
-
-  /**
-   * The alignment of the portal content along the anchor side.
-   *
-   * @default "center"
-   */
-  align: {
-    type: "enum",
-    values: anchorAligns,
-    default: "center",
-  } satisfies PropDef<(typeof anchorAligns)[number]>,
 
   /** Offset in pixels from the anchor element along the side axis. */
   sideOffset: {
