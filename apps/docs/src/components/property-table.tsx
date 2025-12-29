@@ -22,8 +22,13 @@ const PropertyCell = ({ children }: { children: React.ReactNode }) => (
 
 export const PropertyTable = ({ properties }: PropertyTableProps) => {
   return (
-    <Box className="border overflow-hidden">
-      <Box px="4" py="2" className="flex gap-2">
+    <Box className="border overflow-hidden border-[rgb(var(--background-color-1))] rounded-md mt-2">
+      <Box
+        px="4"
+        py="2"
+        radius="none"
+        className="flex gap-2 bg-[rgb(var(--background-color-2))]"
+      >
         <Box className="flex-1 font-bold">Property</Box>
         <Box className="flex-1 font-bold">Type</Box>
         <Box className="flex-2 font-bold">Values</Box>
@@ -35,8 +40,8 @@ export const PropertyTable = ({ properties }: PropertyTableProps) => {
           key={property.name}
           px="4"
           py="2"
-          className="flex gap-2 border-t"
           radius="none"
+          className="flex gap-2 border-t"
         >
           <Box className="flex-1">
             <PropertyCell>{property.name}</PropertyCell>
