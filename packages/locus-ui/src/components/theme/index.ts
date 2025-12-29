@@ -4,5 +4,6 @@ export type {
   ThemeAppearance,
   ThemeRadius,
   ThemeRoundness,
+  ThemeSpacing,
 } from "./theme-context";
 export { ThemeControl } from "./theme-control";
