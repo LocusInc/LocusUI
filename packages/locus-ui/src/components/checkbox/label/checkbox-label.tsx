@@ -32,8 +32,8 @@ const CheckboxLabel = React.forwardRef<HTMLLabelElement, CheckboxLabelProps>(
       <label
         ref={ref}
         htmlFor={context.labelId}
-        data-position={position ?? "right"}
         className={clsx("checkbox-label", className)}
+        {...(position && { [`data-position`]: position })}
       >
         <Text>{children}</Text>
       </label>

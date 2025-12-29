@@ -4,11 +4,12 @@ import { LabelPosition } from "./label/checkbox-label.props";
 export interface CheckboxContextValue {
   value: boolean;
   setValue: (value: boolean) => void;
-  onValueChange?: (value: boolean) => void;
+  onCheckedChange?: (value: boolean) => void;
   labelId: string;
   labelPosition?: LabelPosition;
   setLabelPosition?: (position: LabelPosition) => void;
   disabled?: boolean;
+  readonly?: boolean;
   required?: boolean;
   indeterminate?: boolean;
   variant?: string;

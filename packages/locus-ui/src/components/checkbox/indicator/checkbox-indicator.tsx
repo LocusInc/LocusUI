@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import React from "react";
 import { CheckMark, Minus } from "../../../icons";
+import { SizeProp, SizePropDef } from "../../../props";
 import { getComponentProps } from "../../../utils/get-component-props";
 import { useCheckboxContext } from "../checkbox-context";
 import {
@@ -8,14 +9,16 @@ import {
   CheckboxIndicatorPropDefs,
 } from "./checkbox-indicator.props";
 
-interface AllCheckboxIndicatorProps extends CheckboxIndicatorInternalProps {}
+interface AllCheckboxIndicatorProps
+  extends CheckboxIndicatorInternalProps,
+    SizeProp {}
 
 type CheckboxIndicatorProps = AllCheckboxIndicatorProps &
   Omit<React.HTMLAttributes<HTMLSpanElement>, "children">;
 
 /**
  * Indicator for a checkbox component.
- * Supports checked, indeterminate, disabled, and high contrast states.
+ * Supports checked, indeterminate, disabled, readonly, and high contrast states.
  */
 const CheckboxIndicator: React.FC<CheckboxIndicatorProps> = React.forwardRef<
   HTMLSpanElement,
@@ -24,37 +27,42 @@ const CheckboxIndicator: React.FC<CheckboxIndicatorProps> = React.forwardRef<
   const {
     value,
     hovered,
-    variant: contextVariant,
     disabled,
-    indeterminate: contextIndeterminate,
-    highContrast: contextHighContrast,
+    readonly,
+    highContrast,
+    indeterminate,
+    variant: contextVariant,
   } = useCheckboxContext();
-  const { variant, indeterminate, highContrast, className } = getComponentProps(
+  const { size, variant, className, style, dataAttrs } = getComponentProps(
     props,
-    CheckboxIndicatorPropDefs
+    CheckboxIndicatorPropDefs,
+    SizePropDef
   );
 
   const indicatorVariant = variant || contextVariant;
-  const indicatorHighContrast = highContrast || contextHighContrast;
-  const indicatorIndeterminate = indeterminate || contextIndeterminate;
+
+  const indicatorProps = {
+    ...(value && { "data-checked": true }),
+    ...(disabled && { "data-disabled": true }),
+    ...(readonly && { "data-readonly": true }),
+    ...(highContrast && { "data-high-contrast": true }),
+    ...(indeterminate && { "data-indeterminate": true }),
+    ...((variant || contextVariant) && { "data-variant": indicatorVariant }),
+  };
 
   return (
     <span
       ref={ref}
-      data-checked={value}
+      style={style}
       data-hovered={hovered}
-      data-disabled={disabled}
-      data-variant={indicatorVariant}
-      data-high-contrast={indicatorHighContrast}
-      data-indeterminate={indicatorIndeterminate}
       className={clsx("checkbox-indicator", className)}
+      {...indicatorProps}
+      {...dataAttrs}
     >
-      {indicatorIndeterminate && !value && (
+      {indeterminate && !value && (
         <Minus
           color={
-            indicatorHighContrast && indicatorVariant === "solid"
-              ? "black"
-              : "white"
+            highContrast && indicatorVariant === "solid" ? "black" : "white"
           }
         />
       )}
@@ -62,9 +70,7 @@ const CheckboxIndicator: React.FC<CheckboxIndicatorProps> = React.forwardRef<
       {value && (
         <CheckMark
           color={
-            indicatorHighContrast && indicatorVariant === "solid"
-              ? "black"
-              : "white"
+            highContrast && indicatorVariant === "solid" ? "black" : "white"
           }
         />
       )}

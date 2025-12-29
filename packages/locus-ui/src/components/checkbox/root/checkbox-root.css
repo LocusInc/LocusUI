@@ -1,11 +1,19 @@
 .checkbox-root[data-variant] {
   display: flex;
-  align-items: center;
-  gap: calc(8px * var(--lcs-spacing, 1));
+  flex-direction: row;
+  gap: calc(12px * var(--lcs-spacing, 1));
   cursor: pointer;
 
+  &:not([data-align]) {
+    align-items: center;
+  }
+
+  &[data-disabled="true"],
+  &[data-readonly="true"] {
+    cursor: not-allowed !important;
+  }
+
   &[data-disabled="true"] {
-    cursor: not-allowed;
     opacity: 0.6;
   }
 

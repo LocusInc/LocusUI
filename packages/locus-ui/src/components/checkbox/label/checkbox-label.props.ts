@@ -9,13 +9,10 @@ const CheckboxLabelPropDefs = {
    *
    * @example position="left" // positions the label to the left of the checkbox
    * @example position="top" // positions the label above the checkbox
-   *
-   * @default "right"
    */
   position: {
     type: "enum",
     values: labelPositions,
-    default: "right",
     dataAttr: "position",
   } satisfies PropDef<LabelPosition>,
 } as const;

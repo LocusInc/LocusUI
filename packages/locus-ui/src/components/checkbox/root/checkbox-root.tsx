@@ -9,7 +9,14 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { MarginPropDefs, MarginProps } from "../../../props";
+import {
+  AlignProp,
+  AlignPropDef,
+  MarginPropDefs,
+  MarginProps,
+  SizeProp,
+  SizePropDef,
+} from "../../../props";
 import {
   filterChildren,
   WithStrictChildren,
@@ -28,7 +35,11 @@ import {
   CheckboxRootPropsDefs,
 } from "./checkbox-root.props";
 
-interface AllCheckboxRootProps extends CheckboxRootInternalProps, MarginProps {}
+interface AllCheckboxRootProps
+  extends CheckboxRootInternalProps,
+    AlignProp,
+    MarginProps,
+    SizeProp {}
 
 const ALLOWED_CHILDREN = [
   CheckboxLabel.displayName!,
@@ -47,21 +58,30 @@ type CheckboxRootProps = AllCheckboxRootProps &
 const CheckboxRoot: FC<CheckboxRootProps> = (props) => {
   const {
     name,
+    size,
     variant,
+    checked,
     dataAttrs,
-    onValueChange,
+    onCheckedChange,
     value: valueProp,
     disabled = false,
     required = false,
+    readonly = false,
     highContrast = false,
     indeterminate = false,
     defaultChecked = false,
-  } = getComponentProps(props, CheckboxRootPropsDefs, MarginPropDefs);
+  } = getComponentProps(
+    props,
+    CheckboxRootPropsDefs,
+    AlignPropDef,
+    MarginPropDefs,
+    SizePropDef
+  );
 
   const [value, setValue] = useControllableState<boolean>({
-    value: valueProp,
+    value: valueProp || checked,
     defaultValue: defaultChecked,
-    onChange: onValueChange,
+    onChange: onCheckedChange,
   });
 
   const labelId = useId();
@@ -88,17 +108,17 @@ const CheckboxRoot: FC<CheckboxRootProps> = (props) => {
     }
 
     return {
-      indicator: <CheckboxIndicator />,
+      indicator: <CheckboxIndicator size={size} />,
       otherChildren: validChildren,
     };
-  }, [validChildren]);
+  }, [validChildren, size]);
 
   const contextValue = useMemo(
     () => ({
       name,
       value,
       setValue,
-      onValueChange,
+      onCheckedChange,
       labelId,
       labelPosition,
       setLabelPosition,
@@ -106,6 +126,7 @@ const CheckboxRoot: FC<CheckboxRootProps> = (props) => {
       hovered,
       setHovered,
       disabled,
+      readonly,
       required,
       indeterminate,
       highContrast,
@@ -113,12 +134,13 @@ const CheckboxRoot: FC<CheckboxRootProps> = (props) => {
     [
       name,
       value,
-      onValueChange,
+      onCheckedChange,
       setValue,
       labelId,
       labelPosition,
       hovered,
       disabled,
+      readonly,
       required,
       indeterminate,
       highContrast,
@@ -126,16 +148,13 @@ const CheckboxRoot: FC<CheckboxRootProps> = (props) => {
   );
 
   const handleClick = () => {
-    if (disabled) return;
+    if (disabled || readonly) return;
     setValue(!value);
   };
 
   return (
     <CheckboxContext.Provider value={contextValue}>
       <div
-        data-checked={value}
-        data-variant={variant}
-        data-disabled={disabled}
         className={clsx("checkbox-root", props.className)}
         onClick={() => handleClick()}
         onMouseEnter={() => setHovered(true)}
