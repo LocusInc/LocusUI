@@ -18,24 +18,26 @@
   --theme-spacing: 2;
 }
 
-[data-spacing="xs"] {
-  --lcs-spacing: 0.5;
-}
-[data-spacing="sm"] {
-  --lcs-spacing: 0.75;
-}
-[data-spacing="md"] {
-  --lcs-spacing: 1;
-}
-[data-spacing="lg"] {
-  --lcs-spacing: 1.5;
-}
-[data-spacing="xl"] {
-  --lcs-spacing: 2;
-}
-[data-spacing="inherit"] {
-  --lcs-spacing: inherit;
-}
-[data-spacing="theme"] {
-  --lcs-spacing: var(--theme-spacing);
+@breakpoints {
+  [data-spacing="xs"] {
+    --lcs-spacing: 0.5;
+  }
+  [data-spacing="sm"] {
+    --lcs-spacing: 0.75;
+  }
+  [data-spacing="md"] {
+    --lcs-spacing: 1;
+  }
+  [data-spacing="lg"] {
+    --lcs-spacing: 1.5;
+  }
+  [data-spacing="xl"] {
+    --lcs-spacing: 2;
+  }
+  [data-spacing="inherit"] {
+    --lcs-spacing: inherit;
+  }
+  [data-spacing="theme"] {
+    --lcs-spacing: var(--theme-spacing);
+  }
 }
