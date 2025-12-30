@@ -11,6 +11,8 @@
   --background-color-3: 154, 154, 154;
 
   --border-color: 65, 65, 65;
+
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
 }
 
 [data-appearance="dark"] {
@@ -26,4 +28,6 @@
   --background-color-3: 72, 72, 72;
 
   --border-color: 156, 156, 156;
+
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
 }
