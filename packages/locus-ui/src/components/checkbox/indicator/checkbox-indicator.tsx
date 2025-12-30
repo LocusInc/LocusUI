@@ -26,6 +26,7 @@ const CheckboxIndicator: React.FC<CheckboxIndicatorProps> = React.forwardRef<
 >((props, ref) => {
   const {
     value,
+    setValue,
     hovered,
     disabled,
     readonly,
@@ -41,6 +42,15 @@ const CheckboxIndicator: React.FC<CheckboxIndicatorProps> = React.forwardRef<
 
   const indicatorVariant = variant || contextVariant;
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
+    if (disabled || readonly) return;
+
+    if (event.key === " " || event.key === "Enter") {
+      event.preventDefault();
+      setValue(!value);
+    }
+  };
+
   const indicatorProps = {
     ...(value && { "data-checked": true }),
     ...(disabled && { "data-disabled": true }),
@@ -54,7 +64,13 @@ const CheckboxIndicator: React.FC<CheckboxIndicatorProps> = React.forwardRef<
     <span
       ref={ref}
       style={style}
+      role="checkbox"
       data-hovered={hovered}
+      aria-disabled={disabled}
+      aria-readonly={readonly}
+      aria-checked={indeterminate ? "mixed" : value}
+      onKeyDown={handleKeyDown}
+      tabIndex={disabled || readonly ? -1 : 0}
       className={clsx("checkbox-indicator", className)}
       {...indicatorProps}
       {...dataAttrs}

@@ -54,13 +54,20 @@
   &[data-variant="solid"] {
     &:not([data-checked="true"]) {
       background-color: rgba(var(--background-color-2), 0.8);
-      border-color: rgba(var(--background-color-2), 0.4);
     }
 
     &[data-checked="true"],
     &[data-indeterminate="true"] {
       background-color: rgb(var(--primary));
-      border-color: rgb(var(--primary));
+    }
+
+    &[data-hovered="true"]:not([data-disabled="true"], [data-readonly="true"]) {
+      background-color: rgba(var(--primary), 0.7);
+    }
+
+    &:focus:not([data-disabled="true"], [data-readonly="true"]) {
+      outline: 1px solid rgba(var(--primary), 1);
+      background-color: rgba(var(--primary), 0.7);
     }
 
     &[data-checked="true"][data-high-contrast="true"],
@@ -76,14 +83,8 @@
       & > * {
         z-index: 1;
         position: relative;
-        background-color: rgba(var(--primary-light), 0.25);
-        border-color: rgb(var(--primary));
+        background-color: rgba(var(--primary), 0.2);
       }
-    }
-
-    &[data-hovered="true"]:not([data-disabled="true"], [data-readonly="true"]) {
-      background-color: rgb(var(--primary), 0.7);
-      border-color: rgba(var(--primary), 0.1);
     }
   }
 
@@ -107,6 +108,11 @@
     &[data-hovered="true"]:not([data-disabled="true"], [data-readonly="true"]) {
       border-color: rgba(var(--primary-dark), 0.7);
     }
+
+    &:focus:not([data-disabled="true"], [data-readonly="true"]) {
+      outline: 1px solid rgba(var(--primary), 0.9);
+      border-color: rgba(var(--primary-dark), 0.7);
+    }
   }
 
   &[data-variant="muted"] {
@@ -115,7 +121,6 @@
     &[data-checked="true"],
     &[data-indeterminate="true"] {
       background-color: rgba(var(--primary), 0.4);
-      /* border-color: rgba(var(--primary), 0.6); */
 
       & > svg > path {
         fill: rgb(var(--primary));
@@ -124,7 +129,11 @@
 
     &[data-hovered="true"]:not([data-disabled="true"], [data-readonly="true"]) {
       background-color: rgba(var(--primary), 0.2);
-      /* border-color: rgba(var(--primary), 0.4); */
+    }
+
+    &:focus:not([data-disabled="true"], [data-readonly="true"]) {
+      outline: 1px solid rgba(var(--primary), 0.6);
+      background-color: rgba(var(--primary), 0.2);
     }
   }
 }
