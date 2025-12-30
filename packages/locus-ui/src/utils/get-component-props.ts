@@ -61,9 +61,7 @@ export function getComponentProps<
 
       if (prop.type === "enum" || prop.type === "enum | string") {
         if (propValue !== null && propValue !== undefined) {
-          if (!breakpoint) {
-            extractedProps[key] = propValue;
-          }
+          if (!breakpoint) extractedProps[key] = propValue;
 
           if (!prop.values.includes(propValue)) {
             if (prop.className) {
