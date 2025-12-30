@@ -16,15 +16,32 @@ module.exports = (opts = {}) => {
     Once(root) {
       const dataAttrRules = [];
 
-      root.walkRules((rule) => {
-        // Match value-specific selectors like [data-radius="md"] but not theme attributes like [data-theme-radius="md"]
-        const hasDataAttr = rule.selector.match(
-          /\[data-(?!theme-)([a-z-]+)="([^"]+)"\]/
-        );
-        if (hasDataAttr) {
-          dataAttrRules.push(rule);
-        }
+      // Find all @breakpoints at-rules and process them
+      root.walkAtRules("breakpoints", (atRule) => {
+        // Clone and insert all children before the at-rule, tracking data-attr rules
+        atRule.nodes.forEach((node) => {
+          const clonedNode = node.clone();
+          atRule.before(clonedNode);
+
+          // If it's a rule with data attributes, track it for breakpoint generation
+          if (clonedNode.type === "rule") {
+            const hasDataAttr = clonedNode.selector.match(
+              /\[data-(?!theme-)([a-z-]+)="([^"]+)"\]/
+            );
+            if (hasDataAttr) {
+              dataAttrRules.push(clonedNode);
+            }
+          }
+        });
+
+        // Remove the @breakpoints wrapper
+        atRule.remove();
       });
+
+      // If no rules to process, exit early
+      if (dataAttrRules.length === 0) {
+        return;
+      }
 
       // Generate breakpoint-specific versions for value selectors
       let lastInsertedRule = dataAttrRules[dataAttrRules.length - 1];
@@ -43,16 +60,16 @@ module.exports = (opts = {}) => {
           });
 
           // Create @media at-rule with min-width
-          const atRule = postcss.atRule({
+          const mediaAtRule = postcss.atRule({
             name: "media",
             params: `(min-width: ${width})`,
           });
 
-          atRule.append(mediaRule);
+          mediaAtRule.append(mediaRule);
 
           // Insert after the last inserted rule to maintain order
-          lastInsertedRule.after(atRule);
-          lastInsertedRule = atRule;
+          lastInsertedRule.after(mediaAtRule);
+          lastInsertedRule = mediaAtRule;
         });
       });
     },
