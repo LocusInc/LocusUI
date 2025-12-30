@@ -5,7 +5,7 @@ import { PropertyTable } from "../../../components/property-table";
 
 const CheckboxPage = () => {
   const labelPositions = ["top", "bottom", "left", "right"] as const;
-  const variants = ["outlined", "solid"] as const;
+  const variants = ["outlined", "solid", "muted"] as const;
   const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
   const alignments = ["start", "center", "end"] as const;
 
@@ -20,7 +20,7 @@ const CheckboxPage = () => {
 
         <div className="flex gap-8">
           {labelPositions.map((position) => (
-            <Checkbox key={position} variant="solid">
+            <Checkbox key={position} variant="muted">
               <Checkbox.Label position={position}>{position}</Checkbox.Label>
             </Checkbox>
           ))}
@@ -44,12 +44,12 @@ const CheckboxPage = () => {
 
         <div className="flex gap-4">
           {sizes.map((size) => (
-            <Checkbox key={size} size={size} variant="solid">
+            <Checkbox key={size} size={size} variant="muted">
               <Checkbox.Label>{size}</Checkbox.Label>
             </Checkbox>
           ))}
 
-          <Checkbox size="40px" variant="solid">
+          <Checkbox size="40px" variant="muted">
             <Checkbox.Label>Custom Size</Checkbox.Label>
           </Checkbox>
         </div>
@@ -60,7 +60,7 @@ const CheckboxPage = () => {
 
         <div className="flex gap-4">
           {alignments.map((alignment) => (
-            <Checkbox key={alignment} align={alignment} variant="solid">
+            <Checkbox key={alignment} align={alignment} variant="muted">
               <Checkbox.Label>
                 {alignment} alignment. This alignment puts the components in the{" "}
                 {alignment} position relative to each other.
@@ -74,15 +74,15 @@ const CheckboxPage = () => {
         </Text>
 
         <div className="flex gap-4">
-          <Checkbox disabled variant="solid">
+          <Checkbox disabled variant="muted">
             <Checkbox.Label>Disabled</Checkbox.Label>
           </Checkbox>
 
-          <Checkbox readonly variant="solid">
+          <Checkbox readonly variant="muted">
             <Checkbox.Label>Readonly</Checkbox.Label>
           </Checkbox>
 
-          <Checkbox defaultChecked variant="solid">
+          <Checkbox defaultChecked variant="muted">
             <Checkbox.Label>Default Checked</Checkbox.Label>
           </Checkbox>
         </div>
@@ -102,6 +102,8 @@ const CheckboxPage = () => {
         <Text mt="4" className="font-bold">
           High Contrast
         </Text>
+
+        <Text>Only available on {`"solid"`} variant</Text>
 
         <div className="flex gap-4">
           <Checkbox defaultChecked highContrast variant="solid">
@@ -137,7 +139,7 @@ const CheckboxPage = () => {
               {
                 name: "data-variant",
                 type: "enum",
-                values: '"solid" | "outlined"',
+                values: '"solid" | "outlined" | "muted"',
               },
               {
                 name: "data-checked",
@@ -196,7 +198,7 @@ const CheckboxPage = () => {
               {
                 name: "data-variant",
                 type: "enum",
-                values: '"solid" | "outlined"',
+                values: '"solid" | "outlined" | "muted"',
               },
             ]}
           />

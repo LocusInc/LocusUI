@@ -4,7 +4,7 @@ import {
   PropDef,
 } from "../../../props/prop-def";
 
-const CheckboxVariants = ["solid", "outlined"] as const;
+const CheckboxVariants = ["solid", "outlined", "muted"] as const;
 
 const CheckboxRootPropsDefs = {
   /**
