@@ -4,8 +4,8 @@ import { colorMap, IconProps } from "./icon-colors";
 export const CheckMark: React.FC<IconProps> = ({ color = "currentColor" }) => {
   return (
     <svg
-      width="20"
-      height="20"
+      width="64"
+      height="64"
       viewBox="0 0 15 15"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
