@@ -38,15 +38,15 @@ const RadiusPropDefs = {
    * Sets the top border-radius of the element.
    * Supports scaled, inherit, custom, and responsive values.
    *
-   * @example radiusT="md" // medium border-radius
-   * @example radiusT="26px" // 26px border-radius custom value
-   * @example radiusT={{ initial: "none", lg: "full" }} // responsive border-radius
+   * @example radius-t="md" // medium border-radius
+   * @example radius-t="26px" // 26px border-radius custom value
+   * @example radius-t={{ initial: "none", lg: "full" }} // responsive border-radius
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-left-radius
    * https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-right-radius
    */
-  radiusT: {
+  "radius-t": {
     type: "enum | string",
     values: radii,
     dataAttr: "radius-t",
@@ -58,15 +58,15 @@ const RadiusPropDefs = {
    * Sets the right border-radius of the element.
    * Supports scaled, inherit, custom, and responsive values.
    *
-   * @example radiusR="md" // medium border-radius
-   * @example radiusR="26px" // 26px border-radius custom value
-   * @example radiusR={{ initial: "none", lg: "full" }} // responsive border-radius
+   * @example radius-r="md" // medium border-radius
+   * @example radius-r="26px" // 26px border-radius custom value
+   * @example radius-r={{ initial: "none", lg: "full" }} // responsive border-radius
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-right-radius
    * https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-right-radius
    */
-  radiusR: {
+  "radius-r": {
     type: "enum | string",
     values: radii,
     dataAttr: "radius-r",
@@ -78,15 +78,15 @@ const RadiusPropDefs = {
    * Sets the bottom border-radius of the element.
    * Supports scaled, inherit, custom, and responsive values.
    *
-   * @example radiusB="md" // medium border-radius
-   * @example radiusB="26px" // 26px border-radius custom value
-   * @example radiusB={{ initial: "none", lg: "full" }} // responsive border-radius
+   * @example radius-b="md" // medium border-radius
+   * @example radius-b="26px" // 26px border-radius custom value
+   * @example radius-b={{ initial: "none", lg: "full" }} // responsive border-radius
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-left-radius
    * https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-right-radius
    */
-  radiusB: {
+  "radius-b": {
     type: "enum | string",
     values: radii,
     dataAttr: "radius-b",
@@ -98,15 +98,15 @@ const RadiusPropDefs = {
    * Sets the left border-radius of the element.
    * Supports scaled, inherit, custom, and responsive values.
    *
-   * @example radiusL="md" // medium border-radius
-   * @example radiusL="26px" // 26px border-radius custom value
-   * @example radiusL={{ initial: "none", lg: "full" }} // responsive border-radius
+   * @example radius-l="md" // medium border-radius
+   * @example radius-l="26px" // 26px border-radius custom value
+   * @example radius-l={{ initial: "none", lg: "full" }} // responsive border-radius
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/border-left-top-radius
    * https://developer.mozilla.org/en-US/docs/Web/CSS/border-left-bottom-radius
    */
-  radiusL: {
+  "radius-l": {
     type: "enum | string",
     values: radii,
     dataAttr: "radius-l",
@@ -118,14 +118,14 @@ const RadiusPropDefs = {
    * Sets the top-left border-radius of the element.
    * Supports scaled, inherit, custom, and responsive values.
    *
-   * @example radiusTL="md" // medium border-radius
-   * @example radiusTL="26px" // 26px border-radius custom value
-   * @example radiusTL={{ initial: "none", lg: "full" }} // responsive border-radius
+   * @example radius-tl="md" // medium border-radius
+   * @example radius-tl="26px" // 26px border-radius custom value
+   * @example radius-tl={{ initial: "none", lg: "full" }} // responsive border-radius
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-left-radius
    */
-  radiusTL: {
+  "radius-tl": {
     type: "enum | string",
     values: radii,
     dataAttr: "radius-tl",
@@ -137,14 +137,14 @@ const RadiusPropDefs = {
    * Sets the top-right border-radius of the element.
    * Supports scaled, inherit, custom, and responsive values.
    *
-   * @example radiusTR="md" // medium border-radius
-   * @example radiusTR="26px" // 26px border-radius custom value
-   * @example radiusTR={{ initial: "none", lg: "full" }} // responsive border-radius
+   * @example "radius-tr"="md" // medium border-radius
+   * @example "radius-tr"="26px" // 26px border-radius custom value
+   * @example "radius-tr"={{ initial: "none", lg: "full" }} // responsive border-radius
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-right-radius
    */
-  radiusTR: {
+  "radius-tr": {
     type: "enum | string",
     values: radii,
     dataAttr: "radius-tr",
@@ -156,14 +156,14 @@ const RadiusPropDefs = {
    * Sets the bottom-right border-radius of the element.
    * Supports scaled, inherit, custom, and responsive values.
    *
-   * @example radiusBR="md" // medium border-radius
-   * @example radiusBR="26px" // 26px border-radius custom value
-   * @example radiusBR={{ initial: "none", lg: "full" }} // responsive border-radius
+   * @example "radius-br"="md" // medium border-radius
+   * @example "radius-br"="26px" // 26px border-radius custom value
+   * @example "radius-br"={{ initial: "none", lg: "full" }} // responsive border-radius
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-right-radius
    */
-  radiusBR: {
+  "radius-br": {
     type: "enum | string",
     values: radii,
     dataAttr: "radius-br",
@@ -175,14 +175,14 @@ const RadiusPropDefs = {
    * Sets the bottom-left border-radius of the element.
    * Supports scaled, inherit, custom, and responsive values.
    *
-   * @example radiusBL="md" // medium border-radius
-   * @example radiusBL="26px" // 26px border-radius custom value
-   * @example radiusBL={{ initial: "none", lg: "full" }} // responsive border-radius
+   * @example "radius-bl"="md" // medium border-radius
+   * @example "radius-bl"="26px" // 26px border-radius custom value
+   * @example "radius-bl"={{ initial: "none", lg: "full" }} // responsive border-radius
    *
    * @link
    * https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-left-radius
    */
-  radiusBL: {
+  "radius-bl": {
     type: "enum | string",
     values: radii,
     dataAttr: "radius-bl",

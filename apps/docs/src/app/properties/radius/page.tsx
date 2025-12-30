@@ -80,37 +80,37 @@ export default function BoxPage() {
       <Text>Individual Corner Radii</Text>
 
       <Box my="4" p="2" className="flex gap-2">
-        <Box p="2" radiusT="xl" radius="none" className="border">
+        <Box p="2" radius-t="xl" radius="none" className="border">
           <Text>This box has xl top radius only</Text>
         </Box>
 
-        <Box p="2" radiusL="xl" radius="none" className="border">
+        <Box p="2" radius-l="xl" radius="none" className="border">
           <Text>This box has xl left radius only</Text>
         </Box>
 
-        <Box p="2" radiusB="xl" radius="none" className="border">
+        <Box p="2" radius-b="xl" radius="none" className="border">
           <Text>This box has xl bottom radius only</Text>
         </Box>
 
-        <Box p="2" radiusR="xl" radius="none" className="border">
+        <Box p="2" radius-r="xl" radius="none" className="border">
           <Text>This box has xl right radius only</Text>
         </Box>
       </Box>
 
       <Box my="4" p="2" className="flex gap-2">
-        <Box p="2" radiusTL="xl" radius="none" className="border">
+        <Box p="2" radius-tl="xl" radius="none" className="border">
           <Text>This box has xl top radius only</Text>
         </Box>
 
-        <Box p="2" radiusTR="xl" radius="none" className="border">
+        <Box p="2" radius-tr="xl" radius="none" className="border">
           <Text>This box has xl left radius only</Text>
         </Box>
 
-        <Box p="2" radiusBR="xl" radius="none" className="border">
+        <Box p="2" radius-br="xl" radius="none" className="border">
           <Text>This box has xl bottom radius only</Text>
         </Box>
 
-        <Box p="2" radiusBL="xl" radius="none" className="border">
+        <Box p="2" radius-bl="xl" radius="none" className="border">
           <Text>This box has xl right radius only</Text>
         </Box>
       </Box>
