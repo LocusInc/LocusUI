@@ -1,3 +1,7 @@
 .lcs-text {
   color: rgb(var(--text-color));
 }
+
+.lcs-text[disabled] {
+  color: rgb(var(--text-color-disabled));
+}

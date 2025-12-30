@@ -1,8 +1,13 @@
-import { GetPropDefTypes } from "../../props/prop-def";
+import { GetPropDefTypes, PropDef } from "../../props/prop-def";
 
 const textAs = ["p", "span", "div"] as const;
 
 const TextPropsDefs = {
+  disabled: {
+    type: "boolean",
+    default: false,
+    dataAttr: "disabled",
+  } satisfies PropDef<boolean>,
   /**
    * Defines wether the Text is rendered as a **p**, **span** or **div**.
    *
